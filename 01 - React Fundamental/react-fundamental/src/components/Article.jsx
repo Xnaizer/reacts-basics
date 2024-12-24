@@ -1,3 +1,6 @@
+import { useContext } from "react";
+import { GlobalContext } from "../context";
+
 // function tambah(a, b) {
 //     return a + b
 // }
@@ -6,11 +9,13 @@ const ArticleStatus = ({isNew}) => {
     return isNew && <span> New Update!</span>;
 };
 
-const ArticleStatus2 = () => {
-    return <span> --New Update! 2</span>;
-};
+// const ArticleStatus2 = () => {
+//     return <span> --New Update! 2</span>;
+// };
 
 function Article (param1) {
+
+    const user = useContext(GlobalContext);
 
     return (
         <>
@@ -27,8 +32,11 @@ function Article (param1) {
             <ArticleStatus isNew={param1.isNew} />
 
             {/* another tries */}
-            {param1.isNew && <ArticleStatus2 />}
+            {/* {param1.isNew && <ArticleStatus2 />} */}
             </small>
+            <div>
+                <small>Ditulis Oleh {user.username}</small>
+            </div>
             
             
         </>

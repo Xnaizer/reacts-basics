@@ -1,6 +1,6 @@
 // React adalah library javascript untuk membuat user interface, digunakan untuk membangun kode yang lebih efektif dan cepat. 
 
-import { Component } from "react"
+// import { Component } from "react"
 
 // cara menginstall React
 // 1. cdn menggunakan link yang di inject ( tidak disarankan karna ga scalable )
@@ -581,3 +581,340 @@ import { Component } from "react"
 // }
 
 // export default Search;
+
+
+// Lifecycle dan useEffect
+
+// index.jsx 
+
+// import posts from '../posts.json';
+// import Article from '../components/Article';
+// import Search from '../components/Search';
+// import { useState, useEffect } from 'react';
+
+// function Homepage() {
+
+//     // fungsi ini digunakan untuk memberikan nilai dari berapa banyak isi dari pencarian yang didapatkan
+//     const [param3, setParam3] = useState(posts);
+//     const [totalPosts, setTotalPost] = useState(0)
+
+
+
+//     // fungsi ini untuk memfilter isi artikel yang ada
+//     const onSearchChange1 = (value) => {
+//         console.log(value);
+//         const filterPosts = posts.filter(item => item.title.includes(value));
+//         setParam3(filterPosts);
+
+//         // ini bagian pembaruan untuk total value didapatkan untuk totalposts
+//         setTotalPost(filterPosts.length);
+//     };
+
+
+//     // componenentDidMount  =  Cocok untuk inisialisasi yang memerlukan DOM, seperti pengambilan data (fetching data), penambahan event listeners, atau integrasi dengan library pihak ketiga.
+
+//     // componenentDidUpdate  = Berguna untuk melakukan tindakan yang bergantung pada perubahan props atau state, seperti memperbarui DOM berdasarkan perubahan data atau mengambil data baru ketika props tertentu berubah.
+
+//     // componenentWillUnmount  = Digunakan untuk melakukan pembersihan, seperti menghapus event listeners, membatalkan permintaan jaringan, atau menghentikan interval/timer.
+
+//     useEffect(() => {
+//         console.log("ada perubaha di state yang ditentukan ini");
+
+//         // setInterval
+
+//         return () =>{
+//             // removeEventListener
+//             // clearInterval
+//             console.log("bersihkan")
+//         }
+//     },[posts]);
+//     //[] menjalankan 1x sehingga useeffect tidak digunakan berkali2 saat diapnggil
+
+
+
+//     return (
+//         <>
+//             <h1>Hello Library.</h1>
+//             <Search onChangeInputSearch={onSearchChange1} totalPosts={totalPosts}/>
+           
+
+//             {param3.map((bebasae, index) => {
+//                 return (
+//                     // <Article title={title} tags={tags} date={date} />
+//                     <Article {...bebasae} key={index} />
+//                     );
+//             })}
+//         </>
+//     );
+// }
+
+// export default Homepage;
+
+// Fetch API dengan useEffect
+
+// import posts from '../posts.json';
+// import Article from '../components/Article';
+// import Search from '../components/Search';
+// import { useState, useEffect } from 'react';
+
+// function Homepage() {
+
+//     // fungsi ini digunakan untuk memberikan nilai dari berapa banyak isi dari pencarian yang didapatkan
+//     const [param3, setParam3] = useState(posts);
+    
+//     // ini digunakan untuk memberi nilai value dari data pencarian
+//     const [totalPosts, setTotalPost] = useState(0)
+
+//     // untuk fetching data ke dalam article
+//     const [externalPosts, setExternalPosts] = useState([])
+
+
+
+//     // fungsi ini untuk memfilter isi artikel yang ada
+//     const onSearchChange1 = (value) => {
+//         console.log(value);
+//         const filterPosts = posts.filter(item => item.title.includes(value));
+//         setParam3(filterPosts);
+
+//         // ini bagian pembaruan untuk total value didapatkan untuk totalposts
+//         setTotalPost(filterPosts.length);
+//     };
+
+
+//     // componenentDidMount  =  Cocok untuk inisialisasi yang memerlukan DOM, seperti pengambilan data (fetching data), penambahan event listeners, atau integrasi dengan library pihak ketiga.
+
+//     // componenentDidUpdate  = Berguna untuk melakukan tindakan yang bergantung pada perubahan props atau state, seperti memperbarui DOM berdasarkan perubahan data atau mengambil data baru ketika props tertentu berubah.
+
+//     // componenentWillUnmount  = Digunakan untuk melakukan pembersihan, seperti menghapus event listeners, membatalkan permintaan jaringan, atau menghentikan interval/timer.
+
+//     // useEffect(() => {
+//     //     console.log("ada perubaha di state yang ditentukan ini");
+
+//     //     // setInterval
+
+//     //       return () =>{
+//     //         // removeEventListener
+//     //         // clearInterval
+//     //         console.log("bersihkan")
+//     //     }
+//     // },[posts]);
+//     //[] menjalankan 1x sehingga useeffect tidak digunakan berkali2 saat diapnggil
+
+
+
+
+//     useEffect(() => {
+//         fetch('https://jsonplaceholder.typicode.com/posts')
+//          .then((response) => response.json())
+//          .then((json) => setExternalPosts(json));
+//     },[]);
+
+
+
+//     return (
+//         <>
+//             <h1>Hello Library.</h1>
+//             <Search onChangeInputSearch={onSearchChange1} totalPosts={totalPosts}/>
+           
+
+//             {param3.map((bebasae, index) => {
+//                 return (
+//                     // <Article title={title} tags={tags} date={date} />
+//                     <Article {...bebasae} key={index} />
+//                     );
+//             })}
+//             <hr />
+//             <h2>External Posts Start Here</h2>
+//             {externalPosts.map((item, index) => (
+//                 <div key={index}>- {item.title}</div>
+//             ))};
+//         </>
+//     );
+// }
+
+// export default Homepage;
+
+
+// Multiple useEffect
+
+// import posts from '../posts.json';
+// import Article from '../components/Article';
+// import Search from '../components/Search';
+// import { useState, useEffect } from 'react';
+
+// function Homepage() {
+
+//     // fungsi ini digunakan untuk memberikan nilai dari berapa banyak isi dari pencarian yang didapatkan
+//     const [param3, setParam3] = useState(posts);
+    
+//     // ini digunakan untuk memberi nilai value dari data pencarian
+//     const [totalPosts, setTotalPost] = useState(0)
+
+//     // untuk fetching data ke dalam article
+//     const [externalPosts, setExternalPosts] = useState([])
+
+
+
+//     // fungsi ini untuk memfilter isi artikel yang ada
+//     const onSearchChange1 = (value) => {
+//         console.log(value);
+//         const filterPosts = posts.filter(item => item.title.includes(value));
+//         setParam3(filterPosts);
+
+//         // ini bagian pembaruan untuk total value didapatkan untuk totalposts
+//         setTotalPost(filterPosts.length);
+//     };
+
+
+//     // componenentDidMount  =  Cocok untuk inisialisasi yang memerlukan DOM, seperti pengambilan data (fetching data), penambahan event listeners, atau integrasi dengan library pihak ketiga.
+
+//     // componenentDidUpdate  = Berguna untuk melakukan tindakan yang bergantung pada perubahan props atau state, seperti memperbarui DOM berdasarkan perubahan data atau mengambil data baru ketika props tertentu berubah.
+
+//     // componenentWillUnmount  = Digunakan untuk melakukan pembersihan, seperti menghapus event listeners, membatalkan permintaan jaringan, atau menghentikan interval/timer.
+
+//     // useEffect(() => {
+//     //     console.log("ada perubaha di state yang ditentukan ini");
+
+//     //     // setInterval
+
+//     //       return () =>{
+//     //         // removeEventListener
+//     //         // clearInterval
+//     //         console.log("bersihkan")
+//     //     }
+//     // },[posts]);
+//     //[] menjalankan 1x sehingga useeffect tidak digunakan berkali2 saat diapnggil
+
+
+
+
+//     useEffect(() => {
+//         fetch('https://jsonplaceholder.typicode.com/posts')
+//          .then((response) => response.json())
+//          .then((json) => setExternalPosts(json));
+//     },[]);
+
+//     useEffect(() => {
+//         console.log("new post just added");
+//     },[param3]);
+
+//     useEffect(() => {
+//         console.log("ini akan memanggil ulang terus tanpa adanya []");
+//     });
+
+
+
+//     return (
+//         <>
+//             <h1>Hello Library.</h1>
+//             <Search onChangeInputSearch={onSearchChange1} totalPosts={totalPosts}/>
+           
+
+//             {param3.map((bebasae, index) => {
+//                 return (
+//                     // <Article title={title} tags={tags} date={date} />
+//                     <Article {...bebasae} key={index} />
+//                     );
+//             })}
+//             <hr />
+//             <h2>External Posts Start Here</h2>
+//             {externalPosts.map((item, index) => (
+//                 <div key={index}>- {item.title}</div>
+//             ))};
+//         </>
+//     );
+// }
+
+// export default Homepage;
+
+// dasar state management dengan useContext
+
+// index.js
+// import { createContext } from "react";
+
+
+
+// export const GlobalContext = createContext(null)
+
+// App.jsx
+
+// import './App.css'
+// import Rumah from './pages'
+// import { GlobalContext } from './context'
+// import Article from "./react-fundamental/src/components/Article";
+
+// function App() {
+//   // const value = true;
+//   const user = {
+//     username: 'Xnaizer'
+//   };
+
+//   return (
+//     <>
+//       {/* conditional rendering digunakan untuk state yang dinamis */}
+//       {/* {value ? 'benar' : 'salah'}  */}
+
+//       <GlobalContext.Provider value={user}>
+
+//       <Rumah />
+//       </GlobalContext.Provider>
+     
+         
+//     </>
+//   );
+// }
+
+// export default App
+
+
+// Article.jsx
+
+// import { useContext } from "react";
+// import { GlobalContext } from "../context";
+
+// // function tambah(a, b) {
+// //     return a + b
+// // }
+
+// const ArticleStatus = ({isNew}) => {
+//     return isNew && <span> New Update!</span>;
+// };
+
+// // const ArticleStatus2 = () => {
+// //     return <span> --New Update! 2</span>;
+// // };
+
+// function Article (param1) {
+
+//     const user = useContext(GlobalContext);
+
+//     return (
+//         <>
+//            <h3>{param1.title}</h3>
+//            <small>
+//             Date : {param1.date}, 
+//             Tags : {param1.tags.join(", ")}, 
+            
+//             {/* conditional rendering  */}
+//             {/* {param1.isNew ? " New Article "  : "Past Article"}  */}
+//             {/* {param1.isNew && " New Update!"} */}
+
+//             {/* conditional rendering melalui props */}
+//             <ArticleStatus isNew={param1.isNew} />
+
+//             {/* another tries */}
+//             {/* {param1.isNew && <ArticleStatus2 />} */}
+//             </small>
+//             <div>
+//                 <small>Ditulis Oleh {user.username}</small>
+//             </div>
+            
+            
+//         </>
+//     );
+// }
+
+// export default Article;
+
+
+// menginstall React Router

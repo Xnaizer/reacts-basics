@@ -4,17 +4,29 @@ import { useState } from 'react';
 function Search(param2) {
     const [search, setSearch] = useState("");
 
-    const onSearchChange = (event) => {
-        setSearch(event.target.value);
-        param2.onChangeInputSearch(event.target.value);
+    const onSearchChange = () => {
+        // setSearch(event.target.value);
+        param2.onChangeInputSearch(search);
     }
+
+
+    // const handleClick = () => {
+    //     console.log('test')
+    // }
+
+    const searchKeydown = (e) => {
+        if ((e.key === "Enter")){
+            onSearchChange();
+        }
+    };
 
     return (
         <>
             <div>
-                Cari Artikel : <input onChange={onSearchChange} />{""}
+                Cari Artikel : <input onChange={e => setSearch(e.target.value)} onKeyDown={searchKeydown} ></input> 
+                <button onClick={onSearchChange}>Cari</button>
             </div>
-            <small>Ditemukan 0 dengan pencarian kata {search}</small>
+            <small>Ditemukan {param2.totalPosts} dengan pencarian kata {search}</small>
         
         </>
     )

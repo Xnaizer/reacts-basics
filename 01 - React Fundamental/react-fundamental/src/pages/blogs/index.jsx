@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 function Blog () {
     // fungsi ini digunakan untuk memberikan nilai dari berapa banyak isi dari pencarian yang didapatkan
@@ -14,7 +15,9 @@ function Blog () {
         <>
             <h2>My Blog Posts</h2>
             {param3.map((item, index) => (
-                <div key={index}>- {item.title}</div>
+                <div key={index}>
+                    <Link to={`/blog/${item.id}`}>- {item.title}</Link>
+                </div>
             ))}
         </>
     )

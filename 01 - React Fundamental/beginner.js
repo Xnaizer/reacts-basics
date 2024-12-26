@@ -1,5 +1,6 @@
 // React adalah library javascript untuk membuat user interface, digunakan untuk membangun kode yang lebih efektif dan cepat. 
 
+import RootLayout from "./react-fundamental/src/layouts/RootLayout";
 import { router } from "./react-fundamental/src/routers";
 
 // import { Component } from "react"
@@ -1000,4 +1001,51 @@ import { router } from "./react-fundamental/src/routers";
 
 
 // Layouting dan Children Routes
+
+// RootLayout.jsx 
+
+// import { Link, Outlet } from "react-router-dom";
+
+// function RootLayout() {
+//     return (
+//         <>
+//         <Link to="/">Home</Link> | <Link to="/about">About</Link>
+//         <p />
+//         <Outlet />
+//         </>
+//     );
+// }
+
+// export default RootLayout;
+
+
+// router.jsx 
+
+// import { createBrowserRouter } from "react-router-dom";
+
+// import RootLayout from "../layouts/RootLayout";
+
+// import Rumah from '../pages/index';
+// import About from "../pages/About";
+
+
+// export const router = createBrowserRouter([
+//     {
+//        path: "/",
+//        element: <RootLayout />, 
+//        children: [
+//         {
+//             path: "/",
+//             element: <Rumah />,
+//         },
+//         {
+//             path: "/about",
+//             element: <About />,
+//         }
+//        ]
+//     }
+// ]);
+
+
+// Halaman Blog
 

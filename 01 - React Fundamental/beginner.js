@@ -1,5 +1,7 @@
 // React adalah library javascript untuk membuat user interface, digunakan untuk membangun kode yang lebih efektif dan cepat. 
 
+import { router } from "./react-fundamental/src/routers";
+
 // import { Component } from "react"
 
 // cara menginstall React
@@ -919,4 +921,83 @@
 
 // menginstall React Router
 
-// ini perubahan lagi
+// routers/index.jsx
+
+// import { createBrowserRouter } from "react-router-dom";
+// import Rumah from '../pages'
+
+
+// export const router = createBrowserRouter([
+//     {
+//        path: "/",
+//        element: <Rumah /> 
+//     }
+// ])
+
+// app.jsx 
+
+// import './App.css'
+// import Rumah from './pages'
+// import { GlobalContext } from './context'
+// import { router} from "./routers"
+// import { RouterProvider } from 'react-router-dom'
+
+// function App() {
+//   // const value = true;
+//   const user = {
+//     username: 'Xnaizer'
+//   };
+
+//   return (
+//     <>
+//       {/* conditional rendering digunakan untuk state yang dinamis */}
+//       {/* {value ? 'benar' : 'salah'}  */}
+
+//       <GlobalContext.Provider value={user}>
+//         <RouterProvider router={router} />
+      
+//       </GlobalContext.Provider>
+     
+         
+//     </>
+//   );
+// }
+
+// export default App
+
+
+// halaman about
+
+// About.jsx 
+
+// function About () {
+//     return <div>Ini Halaman About</div>;
+// }
+
+// export default About;
+
+
+
+
+// routers/index.jsx 
+
+// import { createBrowserRouter } from "react-router-dom";
+// import Rumah from '../pages/index';
+// import About from "../pages/About";
+
+
+// export const router = createBrowserRouter([
+//     {
+//        path: "/",
+//        element: <Rumah />, 
+//     },
+//     {
+//         path: "/about",
+//         element: <About />,
+//     }
+// ]);
+
+
+
+// Layouting dan Children Routes
+

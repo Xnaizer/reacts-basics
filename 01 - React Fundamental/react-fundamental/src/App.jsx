@@ -1,6 +1,8 @@
 import './App.css'
 import Rumah from './pages'
 import { GlobalContext } from './context'
+import { router} from "./routers"
+import { RouterProvider } from 'react-router-dom'
 
 function App() {
   // const value = true;
@@ -14,8 +16,8 @@ function App() {
       {/* {value ? 'benar' : 'salah'}  */}
 
       <GlobalContext.Provider value={user}>
-
-      <Rumah />
+        <RouterProvider router={router} />
+      
       </GlobalContext.Provider>
      
          

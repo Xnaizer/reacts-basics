@@ -1,5 +1,6 @@
 // React adalah library javascript untuk membuat user interface, digunakan untuk membangun kode yang lebih efektif dan cepat. 
 
+import ErrorPage from "./react-fundamental/src/components/ErrorPage";
 import RootLayout from "./react-fundamental/src/layouts/RootLayout";
 import { router } from "./react-fundamental/src/routers";
 
@@ -1347,3 +1348,62 @@ import { router } from "./react-fundamental/src/routers";
 
 // Eror page
 
+// component ErrorPage.jsx
+
+// import { useRouteError } from "react-router-dom";
+
+// function ErrorPage() {
+//     const error = useRouteError();
+
+//     return (
+//         <>
+//             <div>NYARI APA HAH!?!?!?!</div>
+//             <div>GA ADA YANG BEGITUAN WOY</div>
+//         </>
+//     );
+// }
+
+// export default ErrorPage;
+
+// router index.jsx
+// import { createBrowserRouter } from "react-router-dom";
+
+// import RootLayout from "../layouts/RootLayout";
+
+// import Rumah from '../pages/index';
+// import About from "../pages/About";
+// import Blog from "../pages/blogs/index";
+// import Post from "../pages/blogs/_id";
+
+// import { posts, postById } from "../apis/loaders";
+
+// import ErrorPage from "../components/ErrorPage";
+
+
+// export const router = createBrowserRouter([
+//     {
+//        path: "/",
+//        element: <RootLayout />, 
+//        errorElement: <ErrorPage />,
+//        children: [
+//         {
+//             path: "/",
+//             element: <Rumah />,
+//         },
+//         {
+//             path: "/blog",
+//             element: <Blog />,
+//             loader: posts, 
+//         },
+//         {
+//             path: "/blog/:id",
+//             element: <Post />,
+//             loader: postById,
+//         },
+//         {
+//             path: "/about",
+//             element: <About />,
+//         }
+//        ]
+//     }
+// ]);

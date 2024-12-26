@@ -1148,3 +1148,101 @@ import { router } from "./react-fundamental/src/routers";
 
 // Dynamic parameter route dan menampilkan article
 
+// router index.jsx 
+
+// import { createBrowserRouter } from "react-router-dom";
+
+// import RootLayout from "../layouts/RootLayout";
+
+// import Rumah from '../pages/index';
+// import About from "../pages/About";
+// import Blog from "../pages/blogs/index";
+// import Post from "../pages/blogs/_id";
+
+
+// export const router = createBrowserRouter([
+//     {
+//        path: "/",
+//        element: <RootLayout />, 
+//        children: [
+//         {
+//             path: "/",
+//             element: <Rumah />,
+//         },
+//         {
+//             path: "/blog",
+//             element: <Blog />,
+//         },
+//         {
+//             path: "/blog/:id",
+//             element: <Post />,
+//         },
+//         {
+//             path: "/about",
+//             element: <About />,
+//         }
+//        ]
+//     }
+// ]);
+
+// pages blogs index.jsx
+
+// import { useState, useEffect } from 'react';
+// import { Link } from 'react-router-dom';
+
+// function Blog () {
+//     // fungsi ini digunakan untuk memberikan nilai dari berapa banyak isi dari pencarian yang didapatkan
+//     const [param3, setParam3] = useState([]);
+
+//     useEffect(() => {
+//         fetch('https://jsonplaceholder.typicode.com/posts')
+//             .then((response) => response.json())
+//             .then((json) => setParam3(json));
+//     },[]);
+
+//     return (
+//         <>
+//             <h2>My Blog Posts</h2>
+//             {param3.map((item, index) => (
+//                 <div key={index}>
+//                     <Link to={`/blog/${item.id}`}>- {item.title}</Link>
+//                 </div>
+//             ))}
+//         </>
+//     )
+// }
+
+// export default Blog;
+
+// pages blogs id.jsx
+
+// import { useEffect, useState } from "react";
+// import { useParams } from "react-router-dom";
+
+// function SinglePost(){
+//     const params = useParams();
+//     const [post, setPost] = useState('');
+
+//     useEffect(() => {
+//         fetch(`https://jsonplaceholder.typicode.com/posts/${params.id}`)
+//             .then((response) => response.json())
+//             .then((json) => setPost(json));
+//     },[]);
+
+
+//     return (
+//         <>
+//             <h2>{post?.title}</h2>
+//             {/* // ? digunakan untuk melakukan post dulu, maka setelah ada isinya baru lakukan tugas ini */}
+//             <div>{post?.body}</div>
+
+//         </>
+//     )
+// }
+
+// export default SinglePost;
+
+
+
+// React router data louder 
+

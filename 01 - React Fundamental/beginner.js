@@ -1049,3 +1049,102 @@ import { router } from "./react-fundamental/src/routers";
 
 // Halaman Blog
 
+// blogs index.jsx
+
+// import { useState, useEffect } from 'react';
+
+// function Blog () {
+//     // fungsi ini digunakan untuk memberikan nilai dari berapa banyak isi dari pencarian yang didapatkan
+//     const [param3, setParam3] = useState([]);
+
+//     useEffect(() => {
+//         fetch('https://jsonplaceholder.typicode.com/posts')
+//             .then((response) => response.json())
+//             .then((json) => setParam3(json));
+//     },[]);
+
+//     return (
+//         <>
+//             <h2>My Blog Posts</h2>
+//             {param3.map((item, index) => (
+//                 <div key={index}>- {item.title}</div>
+//             ))}
+//         </>
+//     )
+// }
+
+// export default Blog;
+
+// RootLayout.jsx
+
+// import { Link, Outlet } from "react-router-dom";
+
+// function RootLayout() {
+//     return (
+//         <>
+//         <Link to="/">Home</Link> | <Link to="/about">About</Link> | <Link to="/blog">Blog</Link>
+//         <p />
+//         <Outlet />
+//         </>
+//     );
+// }
+
+// export default RootLayout;
+
+
+// pages index.jsx
+// import posts from '../posts.json';
+// import Article from '../components/Article';
+// import Search from '../components/Search';
+// import { useState, useEffect } from 'react';
+
+// function Homepage() {
+
+//     // fungsi ini digunakan untuk memberikan nilai dari berapa banyak isi dari pencarian yang didapatkan
+//     const [param3, setParam3] = useState(posts);
+    
+//     // ini digunakan untuk memberi nilai value dari data pencarian
+//     const [totalPosts, setTotalPost] = useState(0)
+
+
+//     // fungsi ini untuk memfilter isi artikel yang ada
+//     const onSearchChange1 = (value) => {
+//         console.log(value);
+//         const filterPosts = posts.filter(item => item.title.includes(value));
+//         setParam3(filterPosts);
+
+//         // ini bagian pembaruan untuk total value didapatkan untuk totalposts
+//         setTotalPost(filterPosts.length);
+//     };
+
+//     useEffect(() => {
+//         fetch('https://jsonplaceholder.typicode.com/posts')
+//             .then((response) => response.json())
+//             .then((json) => setExternalPosts(json));
+//     },[]);
+
+
+
+//     return (
+//         <>
+//             <h1>Hello Library.</h1>
+//             <Search onChangeInputSearch={onSearchChange1} totalPosts={totalPosts}/>
+           
+
+//             {param3.map((bebasae, index) => {
+//                 return (
+//                     // <Article title={title} tags={tags} date={date} />
+//                     <Article {...bebasae} key={index} />
+//                     );
+//             })}
+       
+            
+//         </>
+//     );
+// }
+
+// export default Homepage;
+
+
+// Dynamic parameter route dan menampilkan article
+

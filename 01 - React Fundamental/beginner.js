@@ -1246,3 +1246,104 @@ import { router } from "./react-fundamental/src/routers";
 
 // React router data louder 
 
+// router index.jsx 
+
+// import { createBrowserRouter } from "react-router-dom";
+
+// import RootLayout from "../layouts/RootLayout";
+
+// import Rumah from '../pages/index';
+// import About from "../pages/About";
+// import Blog from "../pages/blogs/index";
+// import Post from "../pages/blogs/_id";
+
+// import { posts, postById } from "../apis/loaders";
+
+
+// export const router = createBrowserRouter([
+//     {
+//        path: "/",
+//        element: <RootLayout />, 
+//        children: [
+//         {
+//             path: "/",
+//             element: <Rumah />,
+//         },
+//         {
+//             path: "/blog",
+//             element: <Blog />,
+//             loader: posts, 
+//         },
+//         {
+//             path: "/blog/:id",
+//             element: <Post />,
+//             loader: postById,
+//         },
+//         {
+//             path: "/about",
+//             element: <About />,
+//         }
+//        ]
+//     }
+// ]);
+
+// blogs index.jsx
+
+
+// import { Link } from 'react-router-dom';
+// import { useLoaderData } from 'react-router-dom';
+
+// function Blog () {
+    
+//     const param3 = useLoaderData()
+    
+//     return (
+//         <>
+//             <h2>My Blog Posts</h2>
+//             {param3.map((item, index) => (
+//                 <div key={index}>
+//                     <Link to={`/blog/${item.id}`}>- {item.title}</Link>
+//                 </div>
+//             ))}
+//         </>
+//     )
+// }
+
+// export default Blog;
+
+// blogs id.jsx
+
+
+// import { useLoaderData } from "react-router-dom";
+
+
+// function SinglePost(){
+    
+//     const post = useLoaderData();
+
+//     return (
+//         <>
+//             <h2>{post?.title}</h2>
+//             {/* // ? digunakan untuk melakukan post dulu, maka setelah ada isinya baru lakukan tugas ini */}
+//             <div>{post?.body}</div>
+
+//         </>
+//     )
+// }
+
+// export default SinglePost;
+
+
+// apis loader.jsx 
+
+// export const posts = () => {
+//     return fetch('https://jsonplaceholder.typicode.com/posts');
+// };
+
+// export const postById = ({ params }) => {
+//     return fetch(`https://jsonplaceholder.typicode.com/posts/${params.id}`);
+// }
+
+
+// Eror page
+

@@ -30,7 +30,7 @@ import { router } from "./react-fundamental/src/routers";
 
 // cd react-fundamental
 // yarn
-// yarn dev
+// yarn dev // menjalakan vite
 
 // cd .\react-fundamental\
 // yarn

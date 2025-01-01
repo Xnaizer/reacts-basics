@@ -1,0 +1,44 @@
+Reactjs adalah library web untuk membuat ui
+
+- based on component
+ component adalah blok antar muka yang dibuat dengan Reactjs
+ bisa digunakan untuk membuat tampilan agar antar muka kompleks dari berbagai komponen 
+
+
+- declarative
+component membentuk sebuah antarmuka dan bagaimana fungsinya menggunakan secara deklaratif dengan jsx
+
+declarative: perintah bagaimana component ini tampil berdasarkan data/state
+
+react tidak menyentuh dom, tapi menggunakan abstraksi secara virtual(vdom) di memori, bukan browser
+
+jsx : gabungan html,css,javascript. membantu dalam meymapaikan dengan jelas dan deklaratif bagaimana komponen seharusnya dirender
+
+- javascript library
+karena react hanya bekerja dilayer view dan butuh banyak library lain untuk membuat aplikasi secara utuh/kompleks
+
+- extremely popular
+react > angularjs > angular > vuejs > vue 
+
+- state driven 
+            1. Render ( state akan merender ui)
+state ----------------- >  Ui  2. event ( ketika ada event)
+  /\        4. re-render   || 4. (akan merender kembali pembaruan)
+  || ----------------------\/
+            3. update state (lakukan update state)
+   
+   
+- created by facebook
+jordan walke 2011 for facebook
+2013 menjadi project open source untuk front end
+
+npx create-react-app my-app
+cd my-app
+npm start
+
+
+
+component sebuah blok yang menampilkan ui
+aplikasi berbasis react seluruhnya adalah component, tiap component memiliki data dan tampilannya masing-masing, component dapat digunakan berulang ulang.
+
+JSX: javascript XML 

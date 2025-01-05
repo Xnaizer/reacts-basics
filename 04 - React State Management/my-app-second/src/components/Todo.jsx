@@ -43,6 +43,13 @@ function Todo  ()  {
         });
     }
 
+    function eventHandler(e) {
+        if (e.key === "Enter") {
+            add();
+        }
+    }
+
+
     useEffect(() =>{
         localStorage.setItem("todos", JSON.stringify(todoList));
         
@@ -67,7 +74,7 @@ function Todo  ()  {
 
         <div className="flex items-center mt-8 bg-gray-200 rounded-2xl">
 
-            <input ref={inputRef} type="text" placeholder="Add a new task" className="bg-transparent border-0 outline-none flex-1 h-14 pl-6 pr-2 placeholder:text-slate-600" />
+            <input ref={inputRef} type="text" placeholder="Add a new task" className="bg-transparent border-0 outline-none flex-1 h-14 pl-6 pr-2 placeholder:text-slate-600"  onKeyDown={eventHandler}/>
 
             <button onClick={add} className="border-none rounded-2xl bg-orange-600 w-32 h-14 text-white text-lg font-medium cursor-pointer">Add +</button>
 

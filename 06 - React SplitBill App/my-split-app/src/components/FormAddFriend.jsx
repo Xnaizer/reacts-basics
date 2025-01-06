@@ -33,7 +33,7 @@ function FormAddFriend({handleAddFriend}) {
     return (
         <>
             <form
-            className="flex flex-col gap-4 bg-white p-8 rounded-xl shadow-lg max-w-[1200px] mx-auto mt-12"
+            className="flex flex-col gap-4 bg-white p-8 rounded-xl shadow-lg max-w-[1200px] mx-auto mt-4"
             onSubmit={handleSubmit}
             >   
             <h2 className="text-3xl font-bold text-center mb-8 mt-8">Add Your Friend!</h2>
@@ -46,7 +46,7 @@ function FormAddFriend({handleAddFriend}) {
                         onChange={(e) => setName(e.target.value)}
                         type="text"
                         placeholder="Masukkan nama teman"
-                        className="border border-gray-300 rounded-md p-6 text-2xl focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        className="border border-gray-300 rounded-md p-6 text-2xl focus:outline-none focus:ring-2 focus:ring-slate-500"
 
                     />
                 </div>
@@ -60,13 +60,13 @@ function FormAddFriend({handleAddFriend}) {
                         onChange={(e) => setImageUrl(e.target.value)}
                         type="text"
                         placeholder="Masukkan URL gambar"
-                        className="border border-gray-300 rounded-md p-6 text-2xl focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        className="border border-gray-300 rounded-md p-6 text-2xl focus:outline-none focus:ring-2 focus:ring-slate-500"
                     />
                 </div>
 
                 <button
                     type="submit"
-                    className="bg-blue-500 text-white px-72 py-8 rounded-md text-2xl font-bold hover:bg-blue-600 transition mt-6"
+                    className="bg-slate-500 text-white px-72 py-8 rounded-md text-2xl font-bold hover:bg-slate-600 transition mt-6"
                 >
                     Tambah
                 </button>

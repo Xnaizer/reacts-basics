@@ -1,10 +1,16 @@
-function Friend({ friend }) {
+function Friend({ friend, selectedFriend, handleSelectFriend }) {
+    const isSelected = selectedFriend?.id === friend.id;
+
     return (
-        <li className="grid grid-cols-[120px_1fr_auto] gap-24 items-center p-12 bg-slate-50 rounded-lg shadow-md hover:shadow-lg transition">
+        <li
+            className={`grid grid-cols-[60px_1fr_auto] gap-24 items-center p-8 rounded-lg shadow-md transition ${
+                isSelected ? "bg-slate-600 text-white" : "bg-slate-50 hover:shadow-lg"
+            }`}
+        >
             <img
                 src={friend.image}
                 alt={friend.name}
-                className="rounded-full w-[120px] h-[120px] object-cover"
+                className="rounded-full w-[60px] h-[60px] object-cover"
             />
 
             <div>
@@ -28,8 +34,13 @@ function Friend({ friend }) {
                 )}
             </div>
 
-            <button className="bg-slate-500 text-white px-16 py-8 rounded-xl text-2xl hover:bg-slate-600">
-                Pilih
+            <button
+                className={`px-8 py-6 rounded-xl text-2xl transition ${
+                    isSelected ? "bg-red-500 hover:bg-red-600" : "bg-slate-500 hover:bg-slate-600 text-white"
+                }`}
+                onClick={() => handleSelectFriend(friend)}
+            >
+                {isSelected ? "Close" : "Select"}
             </button>
         </li>
     );

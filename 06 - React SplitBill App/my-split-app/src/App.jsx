@@ -124,7 +124,9 @@ function App() {
         {/* Bagian kanan */}
         {selectedFriend && (
           <div className="w-1/2">
-              <FormSplitBill selectedFriend={selectedFriend} handleSplitBill={handleSplitBill} />
+              <FormSplitBill 
+              selectedFriend={selectedFriend} handleSplitBill={handleSplitBill}
+              key={selectedFriend.id} />
           </div>
         )}
       </div>

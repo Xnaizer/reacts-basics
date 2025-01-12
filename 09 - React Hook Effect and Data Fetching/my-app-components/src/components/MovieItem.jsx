@@ -1,10 +1,11 @@
 
 
-function MovieItem({movie}) {
+function MovieItem({movie, handleSelectedMovieId}) {
     return (
         <li
             key={movie.imdbID}
             className="relative grid grid-cols-[4rem,1fr] gap-6 items-center p-6 border-b border-background-100 cursor-pointer transition-all duration-300 hover:bg-background-100"
+            onClick={() => handleSelectedMovieId(movie.imdbID)}
         >
             <img
             src={movie.Poster}

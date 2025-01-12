@@ -10,6 +10,7 @@ import BoxMovies from "./components/BoxMovies";
 import WatchedSummary from "./components/WatchedSummary";
 import Loader from "./components/Loader";
 import ErrorMessage from "./components/ErrorMessage";
+import MovieDetails from "./components/MovieDetails";
 
 const tempMovieData = [
   {
@@ -35,28 +36,28 @@ const tempMovieData = [
   },
 ];
 
-const tempWatchedData = [
-  {
-    imdbID: "tt15398776",
-    Title: "Oppenheimer",
-    Year: "2013",
-    Poster:
-      "https://m.media-amazon.com/images/M/MV5BMDBmYTZjNjUtN2M1MS00MTQ2LTk2ODgtNzc2M2QyZGE5NTVjXkEyXkFqcGdeQXVyNzAwMjU2MTY@._V1_SX300.jpg",
-    runtime: 180,
-    imdbRating: 8.6,
-    userRating: 10,
-  },
-  {
-    imdbID: "tt1517268",
-    Title: "Barbie",
-    Year: "2023",
-    Poster:
-      "https://m.media-amazon.com/images/M/MV5BNjU3N2QxNzYtMjk1NC00MTc4LTk1NTQtMmUxNTljM2I0NDA5XkEyXkFqcGdeQXVyODE5NzE3OTE@._V1_SX300.jpg",
-    runtime: 114,
-    imdbRating: 7.2,
-    userRating: 8,
-  },
-];
+// const tempWatchedData = [
+//   {
+//     imdbID: "tt15398776",
+//     Title: "Oppenheimer",
+//     Year: "2013",
+//     Poster:
+//       "https://m.media-amazon.com/images/M/MV5BMDBmYTZjNjUtN2M1MS00MTQ2LTk2ODgtNzc2M2QyZGE5NTVjXkEyXkFqcGdeQXVyNzAwMjU2MTY@._V1_SX300.jpg",
+//     runtime: 180,
+//     imdbRating: 8.6,
+//     userRating: 10,
+//   },
+//   {
+//     imdbID: "tt1517268",
+//     Title: "Barbie",
+//     Year: "2023",
+//     Poster:
+//       "https://m.media-amazon.com/images/M/MV5BNjU3N2QxNzYtMjk1NC00MTc4LTk1NTQtMmUxNTljM2I0NDA5XkEyXkFqcGdeQXVyODE5NzE3OTE@._V1_SX300.jpg",
+//     runtime: 114,
+//     imdbRating: 7.2,
+//     userRating: 8,
+//   },
+// ];
 
 const average = (arr) =>
   arr.reduce((acc, cur) => acc + cur / arr.length, 0);
@@ -65,11 +66,12 @@ const average = (arr) =>
 export default function App() {
 
   const [movies, setMovies] = useState([]);
-  const [watched, setWatched] = useState(tempWatchedData);
+  const [watched, setWatched] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(null); // Optional: To handle and display errors
-
-  const query = "oppenheimer";
+  const [error, setError] = useState(""); // Optional: To handle and display errors
+  const [query, setQuery] = useState("");
+  const [selectedMovieId, setSelectedMovieId] = useState(null);
+  // const tempQuery = "oppenheimer";
   const API_KEY = "5b6e54cd";
 
   // useEffect(() => {
@@ -78,39 +80,81 @@ export default function App() {
   //   .then((data) => setMovies(data.Search));
   // }, []);
 
+  function handleSelectedMovieId(id) {
+    setSelectedMovieId((selectedId) => selectedId === id ? null : id);
+    // console.log(id);
+  }
+
+  function handleCloseMovieDetails() {
+    setSelectedMovieId(null);
+  }
+
+  function handleAddWatched(movie) {
+    setWatched(watched => [...watched, movie]);
+  }
+
+  function handleDeleteWatched(id) {
+    setWatched(watched => watched.filter((movie) => movie.imdbID !== id));
+  }
+
   useEffect(() => {
-    // Define the asynchronous function inside useEffect
+    const controller = new AbortController();
+  
     async function getMovies() {
+      if (!query.trim()) {
+        setMovies([]);
+        setError("");
+        setIsLoading(false);
+        return;
+      }
+  
       try {
-        setIsLoading(true); // Start loading
-        setError(null); // Reset previous errors
-
+        setIsLoading(true);
+        setError("");
+  
         const res = await fetch(
-          `https://www.omdbapi.com/?i=tt3896198&apikey=${API_KEY}&s=${query}`
+          `https://www.omdbapi.com/?i=tt3896198&apikey=${API_KEY}&s=${query}`,
+          { signal: controller.signal }
         );
-
+  
         if (!res.ok) {
           throw new Error("Network response was not ok");
         }
-
+  
         const data = await res.json();
-
+  
         if (data.Response === "False") {
           throw new Error(data.Error || "Failed to fetch movies");
         }
-
-        setMovies(data.Search || []); // Update movies state
+  
+        setMovies(data.Search);
       } catch (error) {
-        console.error("Error fetching movies:", error.message);
-        setError(error.message); // Update error state
+        if (error.name === "AbortError") {
+          console.log("Fetch aborted");
+        } else {
+          console.error("Error fetching movies:", error.message);
+          setError(error.message);
+        }
       } finally {
-        setIsLoading(false); // Stop loading
+        setIsLoading(false);
       }
     }
+    
+    if (query.length < 3) {
+      setMovies([]);
+      setError("");
+      setIsLoading(false);
+      return;
+    }
 
-    getMovies(); // Invoke the asynchronous function
-  }, [API_KEY]);
 
+    getMovies();
+  
+    return () => controller.abort(); // Cleanup pada perubahan query
+  }, [query]);
+
+
+  
   // const movieListContent = isLoading ? (
   //   <Loader />
   // ) : error ? (
@@ -122,8 +166,11 @@ export default function App() {
   return (
     <>
       <NavBar>
-        <Logo />
-        <Search />
+        <Logo  />
+        <Search 
+        query={query}
+        setQuery={setQuery}
+        />
         <NumResult movies={movies} />
       </NavBar>
 
@@ -148,18 +195,37 @@ export default function App() {
 
 
         <BoxMovies>
-          {isLoading && <Loader />}
-          {error && <ErrorMessage message={error} />}
-          {!isLoading && !error && <MovieList movies={movies} />}
+        {isLoading && <Loader />}
+        {error && <ErrorMessage message={error} />}
+        {!isLoading && !error && (
+          <MovieList 
+          movies={movies.length > 0 ? movies : tempMovieData} handleSelectedMovieId={handleSelectedMovieId}
+          
+          />
+        )}
         </BoxMovies>
           
         <BoxMovies>
-        <WatchedSummary 
+          { selectedMovieId ? 
+            <MovieDetails 
+            selectedMovieId={selectedMovieId}
+            handleCloseMovieDetails={handleCloseMovieDetails}
+            API_KEY={API_KEY}
+            handleAddWatched={handleAddWatched}
+            watched={watched}
+            /> : (
+            <>
+            <WatchedSummary 
             average={average}
-            watched={watched}/>
-            <WatchedList
             watched={watched}
             />
+            <WatchedList
+            watched={watched}
+            handleDeleteWatched={handleDeleteWatched}
+            />
+            </>
+            )
+          }
         </BoxMovies>
           
           

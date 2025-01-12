@@ -2,7 +2,7 @@
 
 function Main({children}) {
     return (
-        <main className="mt-6 flex gap-10 justify-center h-[calc(150vh-14.4rem)]">
+        <main className="mt-6 flex gap-10 justify-center   sm:flex-col lg:flex-row xl:flex-row sm:gap-0">
           {children}
         </main>
     );

@@ -2,7 +2,7 @@
 function WatchedSummary({watched, average}){
     const avgImdbRating = average(watched.map((movie) => movie.imdbRating));
     const avgUserRating = average(watched.map((movie) => movie.userRating));
-    const avgRuntime = average(watched.map((movie) => movie.runtime));
+    const totalWatchTime = watched.reduce((acc, movie) => acc + movie.runtime, 0);
 
     return (
         <div className="p-8 bg-background-100 rounded-lg shadow-md">
@@ -21,8 +21,8 @@ function WatchedSummary({watched, average}){
                 <span>{avgUserRating.toFixed(1)}</span>
             </p>
             <p className="flex items-center gap-2">
-                <span>⏳</span>
-                <span>{avgRuntime.toFixed(0)} min</span>
+                <span>⏳Total :</span>
+                <span>{totalWatchTime.toFixed(0)} min</span>
             </p>
             </div>
         </div>

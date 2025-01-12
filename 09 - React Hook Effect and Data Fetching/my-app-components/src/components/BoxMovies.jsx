@@ -4,7 +4,7 @@ function BoxMovies({children}) {
 
     const [isOpen, setIsOpen] = useState(true);
     return (
-        <div className="w-[40%] max-w-100 bg-background-500 rounded-lg overflow-hidden relative text-white">
+        <div className="w-[40%] max-w-100 max-h-[700px] bg-background-500 rounded-lg  overflow-y-scroll relative text-white ">
           
           <button
             className="absolute top-2 right-2 h-6 w-6 rounded-full bg-background-900 text-text text-sm font-bold cursor-pointer z-50"

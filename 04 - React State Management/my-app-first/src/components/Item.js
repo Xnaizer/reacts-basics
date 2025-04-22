@@ -1,23 +1,19 @@
-
-
 function Item({ item, handleDeleteNote, handleToggleDone }) {
-return (
+  return (
     <li key={item.id}>
-    <input
+      <input
         type="checkbox"
         checked={item.done} // Menyimpan status checkbox sesuai dengan item.done
         onChange={() => handleToggleDone(item.id)} // Menangani perubahan status 'done'
-    />
+      />
 
-    <span
-        style={{ textDecoration: item.done ? "line-through" : "none" }}
-    >
+      <span style={{ textDecoration: item.done ? "line-through" : "none" }}>
         {item.title}
-    </span>
+      </span>
 
-    <button onClick={() => handleDeleteNote(item.id)}>❌</button>
+      <button onClick={() => handleDeleteNote(item.id)}>❌</button>
     </li>
-);
+  );
 }
 
 export default Item;

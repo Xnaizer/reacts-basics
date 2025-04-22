@@ -1,4 +1,4 @@
-import { use, useState } from "react";
+import { useState } from "react";
 
 // function App() {
 //   return (
@@ -23,10 +23,10 @@ function App() {
   return (
     <>
       <Step />
-      
     </>
   );
 }
+
 function Step() {
   const [step, setStep] = useState(1);
   const [isOpen, setIsOpen] = useState(true);

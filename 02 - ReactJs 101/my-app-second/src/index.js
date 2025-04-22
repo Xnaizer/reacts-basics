@@ -52,8 +52,8 @@ function Menu() {
           {/* react fragment digunakan untuk membuat jsx dapat menerima 2 lebih tag di sini ada tag ul dan p */}
           {/* <></> ini cara singkat react fragment */}
           <p>
-                Aneka makanan Indonesia yang disajikan oleh warteg mang udin sebagai pemenuhan makanan kesehatan yang diperlukan dalam kehidupan
-                sehari-hari.
+              Aneka makanan Indonesia yang disajikan oleh warteg mang udin sebagai pemenuhan makanan kesehatan yang diperlukan dalam kehidupan
+              sehari-hari.
           </p>
           
           <ul className="foods">

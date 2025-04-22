@@ -44,6 +44,17 @@ function ChoosePetsSection() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 items-center">
               {/* Pet Card Template */}
               <PetsCardTemplate />
+              <PetsCardTemplate />
+              <PetsCardTemplate />
+              <PetsCardTemplate />
+              <PetsCardTemplate />
+              <PetsCardTemplate />
+              <PetsCardTemplate />
+              <PetsCardTemplate />
+              <PetsCardTemplate />
+              <PetsCardTemplate />
+              <PetsCardTemplate />
+              <PetsCardTemplate />
               {/* Repeat for other pets... */}
             </div>
           </div>

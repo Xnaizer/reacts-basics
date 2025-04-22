@@ -9,6 +9,7 @@ function App() {
       text:"hello"
     }
   ]);
+  
   const [inputNote, setInputNote] = useState("");
 
 
